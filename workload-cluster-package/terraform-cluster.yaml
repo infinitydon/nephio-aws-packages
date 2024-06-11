@@ -1,0 +1,20 @@
+apiVersion: infra.contrib.fluxcd.io/v1alpha2
+kind: Terraform
+metadata:
+  name: example-cluster
+  namespace: flux-system
+spec:
+  interval: 1m
+  approvePlan: auto
+  path: ./workload-eks-tf-module-github
+  sourceRef:
+    kind: GitRepository
+    name: eks-infra-tf-repo
+    namespace: flux-system
+  varsFrom:
+  - kind: Secret
+    name: github-pat-credentials
+  - kind: ConfigMap
+    name: example-config-values    
+  writeOutputsToSecret:
+    name: example-outputs    
