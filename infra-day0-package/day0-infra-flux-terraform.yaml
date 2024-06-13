@@ -13,6 +13,11 @@ spec:
     kind: GitRepository
     name: eks-infra-tf-repo
     namespace: flux-system
+  vars:
+  - name: github_org
+    value: GITHUB_ORG
+  - name: workload_cluster_region
+    value: WORKLOAD_CLUSTER_REGION
   varsFrom:
   - kind: Secret
     name: github-pat-credentials
