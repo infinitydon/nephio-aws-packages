@@ -6,15 +6,25 @@ metadata:
 spec:
   interval: 1m
   approvePlan: auto
+  destroyResourcesOnDeletion: true
   path: ./workload-eks-tf-module-github
+  runnerPodTemplate:
+    spec:
+      image: ghcr.io/infinitydon/fluxcd-tf-controller-awscli:v0.16.0-rc.4  
   sourceRef:
     kind: GitRepository
     name: eks-infra-tf-repo
     namespace: flux-system
-  varsFrom:
-  - kind: Secret
-    name: github-pat-credentials
-  - kind: ConfigMap
-    name: example-config-values    
+  vars:
+  - name: region
+    value: AWS_REGION
+  - name: eks_cluster_name
+    value: EKS_CLUSTER_NAME
+  - name: eks_cluster_version
+    value: EKS_VERSION
+  - name: node_instance_type
+    value: INSTANCE_TYPE
+  - name: parameter_store_name
+    value: PARAMETER_STORE_NAME
   writeOutputsToSecret:
-    name: example-outputs    
+    name: example-outputs   
