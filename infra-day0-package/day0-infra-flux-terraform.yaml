@@ -18,6 +18,8 @@ spec:
     value: GITHUB_ORG
   - name: workload_cluster_region
     value: WORKLOAD_CLUSTER_REGION
+  - name: attach_2nd_eni_lambda_s3_bucket
+    value: MULTUS_LAMBDA_S3_BUCKET
   varsFrom:
   - kind: Secret
     name: github-pat-credentials
