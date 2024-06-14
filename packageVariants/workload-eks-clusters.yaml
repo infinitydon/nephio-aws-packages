@@ -1,0 +1,134 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: ran-eks-cluster
+spec:
+  upstream:
+    repo: nephio-aws-packages
+    package: workload-cluster-package
+    revision: main
+  downstream:
+    repo: mgmt
+    package: ran
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: AWS_REGION
+        put-value: us-west-2
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: EKS_CLUSTER_NAME
+        put-value: ran
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: EKS_VERSION
+        put-value: "1.29"
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: INSTANCE_TYPE
+        put-value: "m5.4xlarge"
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: PARAMETER_STORE_NAME
+        put-value: ran-5g
+---
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: controlplane-eks-cluster
+spec:
+  upstream:
+    repo: nephio-aws-packages
+    package: workload-cluster-package
+    revision: main
+  downstream:
+    repo: mgmt
+    package: controlplane
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: AWS_REGION
+        put-value: us-west-2
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: EKS_CLUSTER_NAME
+        put-value: ctrlplane
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: EKS_VERSION
+        put-value: "1.29"
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: INSTANCE_TYPE
+        put-value: "m5.4xlarge"
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: PARAMETER_STORE_NAME
+        put-value: control-plane-5g
+---
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: userplane-eks-cluster
+spec:
+  upstream:
+    repo: nephio-aws-packages
+    package: workload-cluster-package
+    revision: main
+  downstream:
+    repo: mgmt
+    package: userplane
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: AWS_REGION
+        put-value: us-west-2
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: EKS_CLUSTER_NAME
+        put-value: userplane
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: EKS_VERSION
+        put-value: "1.29"
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: INSTANCE_TYPE
+        put-value: "m5.4xlarge"
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: PARAMETER_STORE_NAME
+        put-value: user-plane-5g        
