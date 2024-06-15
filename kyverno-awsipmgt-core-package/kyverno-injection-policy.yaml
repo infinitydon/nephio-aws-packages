@@ -1,10 +1,10 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: CNF_NAME-inject-multus
+  name: CLUSTER_POLICY_NAME
   namespace: kyverno
   annotations:
-    policies.kyverno.io/title: Inject Annotations
+    policies.kyverno.io/title: Inject Init-Container
     policies.kyverno.io/category: Sample
     policies.kyverno.io/subject: Pod
     policies.kyverno.io/description: >-
@@ -17,7 +17,7 @@ spec:
       - resources:
           selector:
             matchLabels:
-              POD_LABEL_KEY: POD_LABEL_VALUE
+              workload.nephio.org/oai: POD_LABEL_VALUE
           kinds:
             - Pod
           operations:
