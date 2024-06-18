@@ -14,7 +14,7 @@ spec:
           "capabilities": {
             "ips": true
           },
-          "master": "eth1",
+          "master": "ens6",
           "mode": "l2",
           "ipam": {
             "type": "static"

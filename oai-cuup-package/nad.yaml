@@ -14,7 +14,7 @@ spec:
           "capabilities": {
             "ips": true
           },
-          "master": "eth4",
+          "master": "ens9",
           "mode": "l2",
           "ipam": {
             "type": "static",
@@ -40,7 +40,7 @@ spec:
           "capabilities": {
             "ips": true
           },
-          "master": "eth1",
+          "master": "ens6",
           "mode": "l2",
           "ipam": {
             "type": "static"
@@ -65,7 +65,7 @@ spec:
           "capabilities": {
             "ips": true
           },
-          "master": "eth2",
+          "master": "ens7",
           "mode": "l2",
           "ipam": {
             "type": "static"
