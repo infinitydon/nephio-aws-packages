@@ -15,11 +15,11 @@ spec:
     namespace: flux-system
   vars:
   - name: github_org
-    value: GITHUB_ORG
+    value: GITHUB_ORG # kpt-set: ${github-org}
   - name: workload_cluster_region
-    value: WORKLOAD_CLUSTER_REGION
+    value: WORKLOAD_CLUSTER_REGION # kpt-set: ${workload-cluster-region}
   - name: attach_2nd_eni_lambda_s3_bucket
-    value: MULTUS_LAMBDA_S3_BUCKET
+    value: MULTUS_LAMBDA_S3_BUCKET # kpt-set: ${multus-lambda-s3-bucket}
   varsFrom:
   - kind: Secret
     name: github-pat-credentials
