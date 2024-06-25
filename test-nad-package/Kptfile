@@ -1,0 +1,9 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: nfdeploy-package
+pipeline:
+  mutators:
+    - image: ghcr.io/infinitydon/nfdeploy-api-config-replacer:v0.1
+      selectors:
+        - kind: NetworkAttachmentDefinition
