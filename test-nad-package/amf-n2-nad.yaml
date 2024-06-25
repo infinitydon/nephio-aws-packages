@@ -1,7 +1,7 @@
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
-  name: amf-core-n2
+  name: amf-core-n2-test
   namespace: amf-example
 spec:
   config: |
