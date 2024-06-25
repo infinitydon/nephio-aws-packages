@@ -5,13 +5,13 @@ metadata:
   annotations:
     config.kubernetes.io/local-config: "true"
 data:
-  CUCP_N2_IP: 10.0.3.16/24 # kpt-set: ${cucp-n2-ip-address}
-  CUCP_N2_GW: 10.0.3.1 # kpt-set: ${cucp-n2-gateway}
-  CUCP_N2_MASTER_INT: eth1
-  CUCP_F1C_IP: 10.0.4.16/24 # kpt-set: ${cucp-f1c-ip-address}
-  CUCP_F1C_GW: 10.0.4.1 # kpt-set: ${cucp-f1c-gateway}
-  CUCP_F1C_MASTER_INT: eth2
-  CUCP_E1_IP: 10.0.5.16/24 # kpt-set: ${cucp-e1-ip-address}
-  CUCP_E1_GW: 10.0.5.1 # kpt-set: ${cucp-e1-gateway}
-  CUCP_E1_MASTER_INT: eth3 
-  AMF_N2_NW_ADDRESS: 10.0.6.0/24
+  CUCP_N2_IP: N2_IP # kpt-set: ${cucp-n2-ip-address}
+  CUCP_N2_GW: N2_GW # kpt-set: ${cucp-n2-gateway}
+  CUCP_N2_MASTER_INT: N2_INTERFACE # kpt-set: ${cucp-n2-multus-interface}
+  CUCP_F1C_IP: F1C_IP # kpt-set: ${cucp-f1c-ip-address}
+  CUCP_F1C_GW: F1C_GW # kpt-set: ${cucp-f1c-gateway}
+  CUCP_F1C_MASTER_INT: N2_INTERFACE # kpt-set: ${cucp-f1c-multus-interface}
+  CUCP_E1_IP: E1_IP # kpt-set: ${cucp-e1-ip-address}
+  CUCP_E1_GW: E1_GW # kpt-set: ${cucp-e1-gateway}
+  CUCP_E1_MASTER_INT: N2_INTERFACE # kpt-set: ${cucp-e1-multus-interface}
+  AMF_N2_NW_ADDRESS: AMF_N2_NW_ADDR # kpt-set: ${amf-n2-network-address}
