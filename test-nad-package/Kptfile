@@ -4,6 +4,6 @@ metadata:
   name: nfdeploy-package
 pipeline:
   mutators:
-    - image: ghcr.io/infinitydon/nfdeploy-api-config-replacer:v0.1
+    - image: ghcr.io/infinitydon/nfdeploy-api-config-replacer:v0.2
       selectors:
         - kind: NetworkAttachmentDefinition
