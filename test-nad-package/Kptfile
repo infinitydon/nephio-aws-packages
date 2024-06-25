@@ -8,6 +8,16 @@ info:
   description: this package is used to test creation nad via replacement through api call      
 pipeline:
   mutators:
-    - image: ghcr.io/infinitydon/nfdeploy-api-config-replacer:v0.4
+    - image: ghcr.io/infinitydon/nf-deploy-api-config-replacer:v0.1
       selectors:
-        - kind: NetworkAttachmentDefinition      
+        - kind: NFDeployment
+        - kind: Config    
+    - image: ghcr.io/infinitydon/nad-api-config-replacer:v0.1
+      selectors:
+        - kind: NetworkAttachmentDefinition
+    - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+      configPath: apply-replacements-owner.yaml
+    - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+      configPath: apply-replacements-namespace.yaml
+    - image: gcr.io/kpt-fn/set-namespace:v0.4.1
+      configPath: cm-namespace.yaml
