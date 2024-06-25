@@ -9,17 +9,22 @@ info:
 pipeline:
   mutators:
     - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+      name: function2
       configPath: apply-replacements-owner.yaml
     - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+      name: function3
       configPath: apply-replacements-namespace.yaml
     - image: gcr.io/kpt-fn/set-namespace:v0.4.1
       configPath: cm-namespace.yaml
+      name: function4
     - image: ghcr.io/infinitydon/nfdeploy-config-replacer:v0.2
       configPath: network-config-params.yaml
+      name: function5
       selectors:
         - kind: NFDeployment
         - kind: Config
     - image: ghcr.io/infinitydon/nad-config-replacer:v0.2
       configPath: network-config-params.yaml
+      name: function6
       selectors:
         - kind: NetworkAttachmentDefinition
