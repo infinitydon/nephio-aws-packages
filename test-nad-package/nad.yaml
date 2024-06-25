@@ -18,7 +18,7 @@ spec:
           "mode": "l2",
           "ipam": {
             "type": "static",
-            "routes": [{ "dst": "AMF_N2_NW_ADDRESS", "gw": "CUCP_N2_GW" }]
+            "routes": [{ "dst": "AMF_N2_NETWORKADDRESS", "gw": "CUCP_N2_GW" }]
           }
         }
       ]
