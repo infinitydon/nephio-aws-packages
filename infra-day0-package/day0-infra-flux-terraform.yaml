@@ -6,6 +6,7 @@ metadata:
   annotations:
     internal.kpt.dev/upstream-identifier: 'infra.contrib.fluxcd.io|Terraform|flux-system|example-cluster'
 spec:
+  storeReadablePlan: human
   interval: 1m
   approvePlan: auto
   path: ./tgw-vpc-subnet-nat-terraform
@@ -22,6 +23,6 @@ spec:
     value: MULTUS_LAMBDA_S3_BUCKET # kpt-set: ${multus-lambda-s3-bucket}
   varsFrom:
   - kind: Secret
-    name: github-pat-credentials
+    name: GITHUB_PAT_CREDENTIALS # kpt-set: ${github-pat-secret-name}
   writeOutputsToSecret:
     name: day0-infra-outputs
