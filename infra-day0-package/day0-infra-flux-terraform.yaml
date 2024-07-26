@@ -9,6 +9,7 @@ spec:
   storeReadablePlan: human
   interval: 1m
   approvePlan: auto
+  destroyResourcesOnDeletion: true
   path: ./tgw-vpc-subnet-nat-terraform
   sourceRef:
     kind: GitRepository
