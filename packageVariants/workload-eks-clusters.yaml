@@ -48,6 +48,18 @@ spec:
       configMap:
         by-value: USE_UBUNTU_AMI
         put-value: true
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: CREATE_EXTERNAL_DNS
+        put-value: false
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: EXT_DNS_NAME
+        put-value: ""
 ---
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
@@ -99,6 +111,18 @@ spec:
       configMap:
         by-value: USE_UBUNTU_AMI
         put-value: false
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: CREATE_EXTERNAL_DNS
+        put-value: true
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: EXT_DNS_NAME
+        put-value: "oai.internal"                 
 ---
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
@@ -149,4 +173,16 @@ spec:
       - kind: Terraform
       configMap:
         by-value: USE_UBUNTU_AMI
-        put-value: false        
+        put-value: false
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: CREATE_EXTERNAL_DNS
+        put-value: false
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: EXT_DNS_NAME
+        put-value: ""         
