@@ -42,6 +42,12 @@ spec:
       configMap:
         by-value: PARAMETER_STORE_NAME
         put-value: ran-5g
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: USE_UBUNTU_AMI
+        put-value: true
 ---
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
@@ -87,6 +93,12 @@ spec:
       configMap:
         by-value: PARAMETER_STORE_NAME
         put-value: control-plane-5g
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: USE_UBUNTU_AMI
+        put-value: false
 ---
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
@@ -131,4 +143,10 @@ spec:
       - kind: Terraform
       configMap:
         by-value: PARAMETER_STORE_NAME
-        put-value: user-plane-5g        
+        put-value: user-plane-5g
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: USE_UBUNTU_AMI
+        put-value: false        

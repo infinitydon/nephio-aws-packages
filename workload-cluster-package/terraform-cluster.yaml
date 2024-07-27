@@ -26,5 +26,11 @@ spec:
     value: INSTANCE_TYPE
   - name: parameter_store_name
     value: PARAMETER_STORE_NAME
+  - name: create_external_dns
+    value: CREATE_EXTERNAL_DNS
+  - name: external_dns_domain_name
+    value: EXT_DNS_NAME
+  - name: use_ubuntu_ami
+    value: USE_UBUNTU_AMI
   writeOutputsToSecret:
     name: example-outputs   
