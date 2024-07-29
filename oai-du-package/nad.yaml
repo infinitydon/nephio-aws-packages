@@ -14,7 +14,7 @@ spec:
           "capabilities": {
             "ips": true
           },
-          "master": "ens6",
+          "master": "DU_F1U_MULTUSPARENTINTERFACE",
           "mode": "l2",
           "ipam": {
             "type": "static"

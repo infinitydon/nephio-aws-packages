@@ -11,8 +11,8 @@ spec:
   interfaces:
   - name: n4
     ipv4:
-      address: 10.1.4.16/24
-      gateway: 10.1.4.1
+      address: SMF_N4_IP
+      gateway: SMF_N4_GW
     vlanID: 31
   networkInstances:
   - name: vpc-internal
