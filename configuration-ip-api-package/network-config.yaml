@@ -73,14 +73,14 @@ data:
           networkAddress: "10.0.4.0/24"
           gw: "10.0.4.1"
           multusParentInterface: "ens7"
-        f1:
+        f1u:
           ip: "10.0.3.17/24"
           networkAddress: "10.0.3.0/24"
           gw: "10.0.3.1"
           multusParentInterface: "ens8"
     du:
       interfaces:
-        f1:
+        f1u:
           ip: "10.0.3.18/24"
           networkAddress: "10.0.3.0/24"
           gw: "10.0.3.1"
