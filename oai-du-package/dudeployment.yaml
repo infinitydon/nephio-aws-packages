@@ -8,8 +8,8 @@ spec:
   interfaces:
   - name: f1
     ipv4:
-      address: DU_F1_IP
-      gateway: DU_F1_GW
+      address: DU_F1U_IP
+      gateway: DU_F1U_GW
     vlanID: 32  
   parametersRefs:
   - apiVersion: workload.nephio.org/v1alpha1
