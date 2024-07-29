@@ -10,8 +10,8 @@ spec:
   interfaces:
   - name: n2
     ipv4:
-      address: 10.1.3.16/24
-      gateway: 10.1.3.1
+      address: AMF_N2_IP 
+      gateway: AMF_N2_GW
     vlanID: 30
   networkInstances:
   - name: vpc-ran
