@@ -19,13 +19,6 @@ data:
           ip: "10.1.4.16/24"
           networkAddress: "10.1.4.0/24"
           gw: "10.1.4.1"
-          multusParentInterface: "eth2"
-    nrf:
-      interfaces: 
-        n4:
-          ip: "10.1.4.17/24"
-          networkAddress: "10.1.4.0/24"
-          gw: "10.1.4.1"
           multusParentInterface: "eth2" 
     upf:
       interfaces: 

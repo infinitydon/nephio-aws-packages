@@ -6,27 +6,15 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: infra-day0-package
-    revision: main
+    revision: r3
   downstream:
     repo: mgmt
     package: infra-day0-package
   pipeline:
     mutators:
-    - image: gcr.io/kpt-fn/search-replace:v0.2.0
-      selectors:
-      - name: day0-infra
+    - image: gcr.io/kpt-fn/apply-setters:v0.2.0
       configMap:
-        by-value: GITHUB_ORG
-        put-value: infinitydon
-    - image: gcr.io/kpt-fn/search-replace:v0.2.0
-      selectors:
-      - name: day0-infra
-      configMap:
-        by-value: WORKLOAD_CLUSTER_REGION
-        put-value: us-west-2
-    - image: gcr.io/kpt-fn/search-replace:v0.2.0
-      selectors:
-      - name: day0-infra
-      configMap:
-        by-value: MULTUS_LAMBDA_S3_BUCKET
-        put-value: multus-lambda-us-west-2-oregon-2024
+        github-org: infinitydon
+        workload-cluster-region: us-west-2
+        multus-lambda-s3-bucket: multus-lambda-us-west-2-oregon-2024
+        github-pat-secret-name: github-pat-credentials

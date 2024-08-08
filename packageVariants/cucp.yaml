@@ -1,16 +1,29 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata:
-  name: regional-oai-cucp
+  name: regional-oai-cucp-test
 spec:
   upstream:
     repo: nephio-aws-packages
-    package: oai-cucp-package
-    revision: main
+    package: oai-cucp-package-test
+    revision: r3
   downstream:
     repo: ran
-    package: oai-cucp
-  annotations:
-    approval.nephio.org/policy: initial
+    package: oai-cucp-test
   injectors:
   - name: regional
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/apply-setters:v0.2.0
+      name: function1
+      configMap:
+        cucp-n2-ip-address: 10.0.3.16/24  
+        cucp-n2-gateway: 10.0.3.1
+        cucp-n2-multus-interface: eth1
+        cucp-f1c-ip-address: 10.0.4.16/24
+        cucp-f1c-gateway: 10.0.4.1
+        cucp-f1c-multus-interface: eth2
+        cucp-e1-ip-address: 10.0.5.16/24
+        cucp-e1-gateway: 10.0.5.1
+        cucp-e1-multus-interface: eth3
+        amf-n2-network-address: 10.0.6.0/24

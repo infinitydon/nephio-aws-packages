@@ -6,7 +6,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: database-package
-    revision: main
+    revision: r3
   downstream:
     repo: control-plane
     package: database
