@@ -11,10 +11,6 @@ replacements:
     fieldPath: data.namespace
   targets:
   - select:
-      kind: ServiceAccount
-    fieldPaths:
-    - metadata.namespace
-  - select:
       kind: Namespace
     fieldPaths:
     - metadata.name
@@ -26,7 +22,3 @@ replacements:
       kind: ConfigMap
     fieldPaths:
     - metadata.namespace
-  - select:
-      kind: ClusterRoleBinding
-    fieldPaths:
-    - subjects.[kind=ServiceAccount].namespace
