@@ -23,6 +23,10 @@ replacements:
     fieldPaths:
     - metadata.namespace
   - select:
+      kind: NFConfig
+    fieldPaths:
+    - metadata.namespace    
+  - select:
       kind: NetworkAttachmentDefinition
     fieldPaths:
     - metadata.namespace    

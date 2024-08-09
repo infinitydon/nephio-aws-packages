@@ -18,4 +18,11 @@ replacements:
       kind: NetworkAttachmentDefinition
     fieldPaths:
     - metadata.namespace
-    
+  - select:
+      kind: NFDeployment
+    fieldPaths:
+    - metadata.namespace
+  - select:
+      kind: NFConfig
+    fieldPaths:
+    - metadata.namespace   
