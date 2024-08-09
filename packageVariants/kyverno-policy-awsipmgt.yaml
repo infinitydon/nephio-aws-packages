@@ -10,6 +10,8 @@ spec:
   downstream:
     repo: control-plane
     package: kyverno-amf-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -37,6 +39,8 @@ spec:
   downstream:
     repo: control-plane
     package: kyverno-smf-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -64,6 +68,8 @@ spec:
   downstream:
     repo: user-plane
     package: kyverno-upf-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -91,6 +97,8 @@ spec:
   downstream:
     repo: ran
     package: kyverno-cucp-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -118,6 +126,8 @@ spec:
   downstream:
     repo: ran
     package: kyverno-cuup-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -145,6 +155,8 @@ spec:
   downstream:
     repo: ran
     package: kyverno-du-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0

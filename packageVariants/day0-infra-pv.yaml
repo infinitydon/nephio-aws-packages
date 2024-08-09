@@ -10,6 +10,8 @@ spec:
   downstream:
     repo: mgmt
     package: infra-day0-package
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/apply-setters:v0.2.0
