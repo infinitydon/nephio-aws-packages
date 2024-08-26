@@ -15,14 +15,7 @@ spec:
       irsa: IRSA_ARN
   terraformModule:
     source: https://github.com/infinitydon/eks-infra-terraform.git//workload-eks-tf-module-github-argocd?ref=main
-  backend: |-
-    terraform {
-      backend "kubernetes" {
-        secret_suffix    = TF_BACKEND_SECRET_NAME
-        in_cluster_config  = true
-        namespace = "tf-system"
-      }
-    }
+  backend: TF_BACKEND_CONFIG # kpt-set: ${tf-backend-config}
   ignoreDelete: false
   keepLatestPodsOnly: true
   taskOptions:
