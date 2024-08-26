@@ -32,9 +32,5 @@ spec:
       value: INSTANCE_TYPE # kpt-set: ${instance-type}
     - name: TF_VAR_parameter_store_name
       value: PARAMETER_STORE_NAME # kpt-set: ${parameter-store-name}
-    - name: TF_VAR_create_external_dns
-      value: CREATE_EXTERNAL_DNS # kpt-set: ${create-external-name}
     - name: TF_VAR_external_dns_domain_name
       value: EXT_DNS_DOMAIN_NAME # kpt-set: ${ext-domain-name}
-    - name: TF_VAR_use_ubuntu_ami
-      value: USE_UBUNTU_AMI # kpt-set: ${use-ubuntu-ami}
