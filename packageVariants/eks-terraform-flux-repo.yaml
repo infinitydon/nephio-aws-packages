@@ -6,7 +6,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: eks-tf-repo-package
-    revision: main
+    revision: r3
   downstream:
     repo: mgmt
     package: eks-tf-repo-package

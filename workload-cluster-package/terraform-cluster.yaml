@@ -1,37 +1,47 @@
-apiVersion: infra.contrib.fluxcd.io/v1alpha2
+apiVersion: tf.galleybytes.com/v1beta1
 kind: Terraform
 metadata:
   name: example-cluster
-  namespace: flux-system
+  namespace: tf-system
 spec:
-  interval: 1m
-  approvePlan: auto
-  destroyResourcesOnDeletion: true
-  storeReadablePlan: human
-  path: ./workload-eks-tf-module-github
-  runnerPodTemplate:
-    spec:
-      image: ghcr.io/infinitydon/fluxcd-tf-controller-awscli:v0.16.0-rc.4  
-  sourceRef:
-    kind: GitRepository
-    name: eks-infra-tf-repo
-    namespace: flux-system
-  vars:
-  - name: region
-    value: AWS_REGION
-  - name: eks_cluster_name
-    value: EKS_CLUSTER_NAME
-  - name: eks_cluster_version
-    value: EKS_VERSION
-  - name: node_instance_type
-    value: INSTANCE_TYPE
-  - name: parameter_store_name
-    value: PARAMETER_STORE_NAME
-  - name: create_external_dns
-    value: CREATE_EXTERNAL_DNS
-  - name: external_dns_domain_name
-    value: EXT_DNS_NAME
-  - name: use_ubuntu_ami
-    value: USE_UBUNTU_AMI
-  writeOutputsToSecret:
-    name: example-outputs   
+  terraformVersion: v1.5.5
+  images:
+    terraform:
+      image: ghcr.io/infinitydon/tf-operator-awscli
+  writeOutputsToStatus: true
+  outputsSecret: example-cluster-tf-output
+  credentials:
+  - aws:
+      irsa: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+  terraformModule:
+    source: https://github.com/infinitydon/eks-infra-terraform.git//workload-eks-tf-module-github-argocd?ref=main
+  backend: |-
+    terraform {
+      backend "kubernetes" {
+        secret_suffix    = TF_BACKEND_SECRET_NAME
+        in_cluster_config  = true
+        namespace = "tf-system"
+      }
+    }
+  ignoreDelete: false
+  keepLatestPodsOnly: true
+  taskOptions:
+  - for:
+    - '*'
+    env:
+    - name: TF_VAR_region
+      value: aws_region # kpt-set: ${aws-region}
+    - name: TF_VAR_eks_cluster_name
+      value: EKS_CLUSTER_NAME # kpt-set: ${eks-cluster-name}
+    - name: TF_VAR_eks_cluster_version
+      value: EKS_VERSION # kpt-set: ${eks-version}
+    - name: TF_VAR_node_instance_type
+      value: INSTANCE_TYPE # kpt-set: ${instance-type}
+    - name: TF_VAR_parameter_store_name
+      value: PARAMETER_STORE_NAME # kpt-set: ${parameter-store-name}
+    - name: TF_VAR_create_external_dns
+      value: CREATE_EXTERNAL_DNS # kpt-set: ${create-external-name}
+    - name: TF_VAR_external_dns_domain_name
+      value: EXT_DNS_DOMAIN_NAME # kpt-set: ${ext-domain-name}
+    - name: TF_VAR_use_ubuntu_ami
+      value: USE_UBUNTU_AMI # kpt-set: ${use-ubuntu-ami}

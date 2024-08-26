@@ -6,7 +6,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: configuration-ip-api-package
-    revision: main
+    revision: r3
   downstream:
     repo: mgmt
     package: configuration-ip-api

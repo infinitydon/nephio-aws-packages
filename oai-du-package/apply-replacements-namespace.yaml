@@ -13,13 +13,16 @@ replacements:
   - select:
       kind: Namespace
     fieldPaths:
-    - metadata.name  
-  - select:
-      kind: NFConfig
-    fieldPaths:
-    - metadata.annotations.[specializer.nephio.org/namespace]
+    - metadata.name
   - select:
       kind: NetworkAttachmentDefinition
     fieldPaths:
     - metadata.namespace
-    - metadata.annotations.[specializer.nephio.org/namespace]    
+  - select:
+      kind: NFDeployment
+    fieldPaths:
+    - metadata.namespace
+  - select:
+      kind: NFConfig
+    fieldPaths:
+    - metadata.namespace     

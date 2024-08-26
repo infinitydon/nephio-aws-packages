@@ -6,7 +6,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: oai-up-operators-package
-    revision: main
+    revision: r3
   downstream:
     repo: user-plane
     package: oai-up-operators

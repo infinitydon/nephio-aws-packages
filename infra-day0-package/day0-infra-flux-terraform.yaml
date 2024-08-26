@@ -1,29 +1,39 @@
-apiVersion: infra.contrib.fluxcd.io/v1alpha2
+apiVersion: tf.galleybytes.com/v1beta1
 kind: Terraform
 metadata:
   name: day0-infra
-  namespace: flux-system
-  annotations:
-    internal.kpt.dev/upstream-identifier: 'infra.contrib.fluxcd.io|Terraform|flux-system|example-cluster'
+  namespace: tf-system
 spec:
-  storeReadablePlan: human
-  interval: 1m
-  approvePlan: auto
-  destroyResourcesOnDeletion: true
-  path: ./tgw-vpc-subnet-nat-terraform
-  sourceRef:
-    kind: GitRepository
-    name: eks-infra-tf-repo
-    namespace: flux-system
-  vars:
-  - name: github_org
-    value: GITHUB_ORG # kpt-set: ${github-org}
-  - name: workload_cluster_region
-    value: WORKLOAD_CLUSTER_REGION # kpt-set: ${workload-cluster-region}
-  - name: attach_2nd_eni_lambda_s3_bucket
-    value: MULTUS_LAMBDA_S3_BUCKET # kpt-set: ${multus-lambda-s3-bucket}
-  varsFrom:
-  - kind: Secret
-    name: GITHUB_PAT_CREDENTIALS # kpt-set: ${github-pat-secret-name}
-  writeOutputsToSecret:
-    name: day0-infra-outputs
+  terraformVersion: 1.5.5
+  writeOutputsToStatus: true
+  outputsSecret: day0-infra-outputs
+  credentials:
+  - aws:
+      irsa: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+  terraformModule:
+    source: https://github.com/infinitydon/eks-infra-terraform.git//tgw-vpc-subnet-nat-terraform?ref=main
+  backend: |-
+    terraform {
+      backend "kubernetes" {
+        secret_suffix    = "day0-infra"
+        in_cluster_config  = true
+        namespace = "tf-system"
+      }
+    }
+  ignoreDelete: false
+  keepLatestPodsOnly: true
+  taskOptions:
+  - for:
+    - '*' # The following config affects all task pods
+    envFrom:
+    - secretRef:
+        name: GITHUB_PAT_CREDENTIALS # kpt-set: ${github-pat-secret-name}
+    env:
+    - name: TF_VAR_github_org
+      value: GITHUB_ORG # kpt-set: ${github-org}
+    - name: TF_VAR_workload_cluster_region
+      value: WORKLOAD_CLUSTER_REGION # kpt-set: ${workload-cluster-region}
+    - name: TF_VAR_attach_2nd_eni_lambda_s3_bucket
+      value: MULTUS_LAMBDA_S3_BUCKET # kpt-set: ${multus-lambda-s3-bucket}
+    - name: TF_VAR_github_repositories
+      value: GITHUB_REPOS # kpt-set: ${github-repos}

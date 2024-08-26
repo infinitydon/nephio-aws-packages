@@ -6,7 +6,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: oai-du-package
-    revision: main
+    revision: r3
   downstream:
     repo: ran
     package: oai-du

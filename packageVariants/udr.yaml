@@ -6,7 +6,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: oai-udr-package
-    revision: main
+    revision: r3
   downstream:
     repo: control-plane
     package: oai-udr
@@ -14,5 +14,3 @@ spec:
     approval.nephio.org/policy: initial
   injectors:
   - name: core
-
----

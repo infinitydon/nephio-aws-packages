@@ -19,18 +19,14 @@ replacements:
     fieldPaths:
     - metadata.annotations.[specializer.nephio.org/namespace]
   - select:
-      kind: NFConfig
-    fieldPaths:
-    - metadata.annotations.[specializer.nephio.org/namespace]
-    - metadata.namespace
-  - select:
       kind: NFDeployment
     fieldPaths:
     - metadata.namespace
-    - metadata.annotations.[specializer.nephio.org/namespace]
+  - select:
+      kind: NFConfig
+    fieldPaths:
+    - metadata.namespace    
   - select:
       kind: NetworkAttachmentDefinition
     fieldPaths:
-    - metadata.namespace
-    - metadata.annotations.[specializer.nephio.org/namespace]
-    
+    - metadata.namespace    

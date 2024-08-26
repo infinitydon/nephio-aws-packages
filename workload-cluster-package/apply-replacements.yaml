@@ -14,8 +14,7 @@ replacements:
       kind: Terraform
     fieldPaths:
     - metadata.name
-    - spec.varsFrom.[kind=ConfigMap].name
-    - spec.writeOutputsToSecret.name
+    - spec.outputsSecret
     options:
       delimiter: '-'
       index: 0    

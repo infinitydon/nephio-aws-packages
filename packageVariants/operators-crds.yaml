@@ -6,7 +6,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: workload-crds-package
-    revision: main
+    revision: r3
   targets:
   - repositories:
     - name: control-plane

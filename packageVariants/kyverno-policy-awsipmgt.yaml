@@ -6,10 +6,12 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-core-package
-    revision: main
+    revision: r3
   downstream:
     repo: control-plane
     package: kyverno-amf-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -33,10 +35,12 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-core-package
-    revision: main
+    revision: r3
   downstream:
     repo: control-plane
     package: kyverno-smf-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -60,10 +64,12 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-core-package
-    revision: main
+    revision: r3
   downstream:
     repo: user-plane
     package: kyverno-upf-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -87,10 +93,12 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-ran-package
-    revision: main
+    revision: r3
   downstream:
     repo: ran
     package: kyverno-cucp-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -114,10 +122,12 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-ran-package
-    revision: main
+    revision: r3
   downstream:
     repo: ran
     package: kyverno-cuup-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
@@ -141,10 +151,12 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-ran-package
-    revision: main
+    revision: r3
   downstream:
     repo: ran
     package: kyverno-du-injection
+  annotations:
+    approval.nephio.org/policy: initial    
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
