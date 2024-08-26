@@ -12,7 +12,7 @@ spec:
   outputsSecret: example-cluster-tf-output
   credentials:
   - aws:
-      irsa: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+      irsa: IRSA_ARN
   terraformModule:
     source: https://github.com/infinitydon/eks-infra-terraform.git//workload-eks-tf-module-github-argocd?ref=main
   backend: |-

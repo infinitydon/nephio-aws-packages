@@ -6,7 +6,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: infra-day0-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: mgmt
     package: infra-day0-package
@@ -25,5 +25,5 @@ spec:
       selectors:
       - kind: Terraform
       configMap:
-        by-value: ACCOUNT_ID
-        put-value: "xxxxxxx"        
+        by-value: IRSA_ARN
+        put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner

@@ -9,7 +9,7 @@ spec:
   outputsSecret: day0-infra-outputs
   credentials:
   - aws:
-      irsa: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+      irsa: IRSA_ARN
   terraformModule:
     source: https://github.com/infinitydon/eks-infra-terraform.git//tgw-vpc-subnet-nat-terraform?ref=main
   backend: |-
