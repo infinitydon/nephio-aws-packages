@@ -3,5 +3,7 @@ kind: NFDeployment
 metadata:
   name: nrf-example
   namespace: nrf-example
+  annotations:
+    argocd.argoproj.io/sync-options: Force=true,Replace=true
 spec:
   provider: nrf.openairinterface.org
