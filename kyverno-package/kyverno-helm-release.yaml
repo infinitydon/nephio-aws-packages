@@ -13,4 +13,7 @@ spec:
       releaseName: kyverno
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: kube-system  
+    namespace: kyverno
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true    
