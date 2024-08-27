@@ -3,7 +3,5 @@ kind: NFDeployment
 metadata:
   name: nrf-example
   namespace: oai-core
-  annotations:
-    argocd.argoproj.io/sync-options: Replace=true
 spec:
   provider: nrf.openairinterface.org
