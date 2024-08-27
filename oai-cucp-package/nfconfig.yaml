@@ -5,6 +5,7 @@ metadata: # kpt-merge: example/cucp-nf-config
   namespace: example
   annotations:
     internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFConfig|example|cucp-nf-config'
+    argocd.argoproj.io/sync-options: Force=true,Replace=true    
 spec:
   configRefs:
   - apiVersion: workload.nephio.org/v1alpha1

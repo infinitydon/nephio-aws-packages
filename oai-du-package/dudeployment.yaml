@@ -3,6 +3,8 @@ kind: NFDeployment
 metadata: 
   name: du-example
   namespace: example
+  annotations:
+    argocd.argoproj.io/sync-options: Force=true,Replace=true  
 spec:
   provider: du.openairinterface.org
   interfaces:

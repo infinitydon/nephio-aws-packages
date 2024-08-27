@@ -3,6 +3,8 @@ kind: NFConfig
 metadata:
   name: oai-du-config
   namespace: example
+  annotations:
+    argocd.argoproj.io/sync-options: Force=true,Replace=true  
 spec:
   configRefs:
   - apiVersion: workload.nephio.org/v1alpha1

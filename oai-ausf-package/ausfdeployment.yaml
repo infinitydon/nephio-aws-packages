@@ -3,5 +3,7 @@ kind: NFDeployment
 metadata:
   name: ausf-example
   namespace: ausf-example
+  annotations:
+    argocd.argoproj.io/sync-options: Force=true,Replace=true  
 spec:
   provider: ausf.openairinterface.org

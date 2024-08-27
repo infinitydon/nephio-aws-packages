@@ -4,6 +4,8 @@ kind: NFConfig
 metadata:
   name: oai-upf-config
   namespace: upf-example
+  annotations:
+    argocd.argoproj.io/sync-options: Force=true,Replace=true  
 spec:
   configRefs:
     - apiVersion: cellular.nephio.org/v1alpha1

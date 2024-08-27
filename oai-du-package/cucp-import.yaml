@@ -5,6 +5,7 @@ metadata:
   namespace: oai-ran-du
   annotations:
     specializer.nephio.org/owner: req.nephio.org/v1alpha1.Dependency.cucp
+    argocd.argoproj.io/sync-options: Force=true,Replace=true    
 spec:
   config:
     apiVersion: workload.nephio.org/v1alpha1
