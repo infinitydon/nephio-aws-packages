@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: example
   annotations:
-    argocd.argoproj.io/sync-options: ServerSideApply=true  
+    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false  
   labels:
     pod-security.kubernetes.io/warn: "privileged"
     pod-security.kubernetes.io/audit: "privileged"

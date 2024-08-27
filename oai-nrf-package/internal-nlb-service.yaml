@@ -7,7 +7,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-type: nlb
     service.beta.kubernetes.io/aws-load-balancer-internal: "true"
     external-dns.alpha.kubernetes.io/hostname: "nrf.oai.internal."
-    argocd.argoproj.io/sync-options: ServerSideApply=true
+    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false
 spec:
   ports:
   - port: 80
