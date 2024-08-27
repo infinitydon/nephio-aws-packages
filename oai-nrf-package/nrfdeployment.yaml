@@ -5,5 +5,6 @@ metadata:
   namespace: nrf-example
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   provider: nrf.openairinterface.org
