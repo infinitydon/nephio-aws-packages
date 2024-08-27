@@ -4,6 +4,6 @@ metadata:
   name: nrf-example
   namespace: nrf-example
   annotations:
-    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   provider: nrf.openairinterface.org
