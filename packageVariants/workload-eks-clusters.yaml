@@ -6,36 +6,35 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: workload-cluster-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: mgmt
     package: ran
   annotations:
-    approval.nephio.org/policy: initial    
+    approval.nephio.org/policy: initial     
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
       selectors:
       - kind: Terraform
       configMap:
-        by-value: ACCOUNT_ID
-        put-value: "xxxxxxx"
-    - image: gcr.io/kpt-fn/search-replace:v0.2.0
-      selectors:
-      - kind: Terraform
-      configMap:
-        by-value: TF_BACKEND_SECRET_NAME
-        put-value: "ran-cluster"
+        by-value: IRSA_ARN
+        put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
     - image: gcr.io/kpt-fn/apply-setters:v0.2.0
       configMap:
         aws-region: us-west-2
         eks-cluster-name: ran
-        eks-version: "1.29"
+        eks-version: "\"1.29\""
         instance-type: m5.4xlarge
         parameter-store-name: ran-5g
-        create-external-name: "false"
-        ext-domain-name: nil
-        use-ubuntu-ami: "true"
+        tf-backend-config: |-
+           terraform {
+             backend "kubernetes" {
+               secret_suffix    = "ran-cluster"
+               in_cluster_config  = true
+               namespace = "tf-system"
+             }
+           }
 ---
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
@@ -45,30 +44,35 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: workload-cluster-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: mgmt
     package: controlplane
   annotations:
-    approval.nephio.org/policy: initial    
+    approval.nephio.org/policy: initial     
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
       selectors:
       - kind: Terraform
       configMap:
-        by-value: ACCOUNT_ID
-        put-value: "xxxxxxx"
+        by-value: IRSA_ARN
+        put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
     - image: gcr.io/kpt-fn/apply-setters:v0.2.0
       configMap:
         aws-region: us-west-2
         eks-cluster-name: ctrlplane
-        eks-version: "1.29"
+        eks-version: "\"1.29\""
         instance-type: m5.4xlarge
         parameter-store-name: control-plane-5g
-        create-external-name: "true"
-        ext-domain-name: oai.internal
-        use-ubuntu-ami: "false"
+        tf-backend-config: |-
+           terraform {
+             backend "kubernetes" {
+               secret_suffix    = "ctrlplane-cluster"
+               in_cluster_config  = true
+               namespace = "tf-system"
+             }
+           }
 ---
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
@@ -78,27 +82,32 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: workload-cluster-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: mgmt
     package: userplane
   annotations:
-    approval.nephio.org/policy: initial    
+    approval.nephio.org/policy: initial     
   pipeline:
     mutators:
     - image: gcr.io/kpt-fn/search-replace:v0.2.0
       selectors:
       - kind: Terraform
       configMap:
-        by-value: ACCOUNT_ID
-        put-value: "xxxxxxx"
+        by-value: IRSA_ARN
+        put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
     - image: gcr.io/kpt-fn/apply-setters:v0.2.0
       configMap:
         aws-region: us-west-2
         eks-cluster-name: userplane
-        eks-version: "1.29"
+        eks-version: "\"1.29\""
         instance-type: m5.4xlarge
         parameter-store-name: user-plane-5g
-        create-external-name: "false"
-        ext-domain-name: nil
-        use-ubuntu-ami: "false"
+        tf-backend-config: |-
+           terraform {
+             backend "kubernetes" {
+               secret_suffix    = "userplane-cluster"
+               in_cluster_config  = true
+               namespace = "tf-system"
+             }
+           }

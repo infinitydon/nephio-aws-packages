@@ -6,7 +6,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-core-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: control-plane
     package: kyverno-amf-injection
@@ -35,7 +35,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-core-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: control-plane
     package: kyverno-smf-injection
@@ -64,7 +64,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-core-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: user-plane
     package: kyverno-upf-injection
@@ -93,7 +93,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-ran-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: ran
     package: kyverno-cucp-injection
@@ -122,7 +122,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-ran-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: ran
     package: kyverno-cuup-injection
@@ -151,7 +151,7 @@ spec:
   upstream:
     repo: nephio-aws-packages
     package: kyverno-awsipmgt-ran-package
-    revision: r3
+    revision: r3-argocd
   downstream:
     repo: ran
     package: kyverno-du-injection
