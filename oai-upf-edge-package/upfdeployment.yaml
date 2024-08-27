@@ -4,7 +4,7 @@ metadata:
   name: upf-example
   namespace: upf-example
   annotations:
-    argocd.argoproj.io/sync-options: Force=true,Replace=true  
+    argocd.argoproj.io/sync-options: ServerSideApply=true  
 spec:
   provider: upf.openairinterface.org
   capacity:

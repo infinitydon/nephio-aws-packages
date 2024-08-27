@@ -4,6 +4,6 @@ metadata:
   name: namespace
   annotations:
     config.kubernetes.io/local-config: "true"
-    argocd.argoproj.io/sync-options: Force=true,Replace=true    
+    argocd.argoproj.io/sync-options: ServerSideApply=true    
 data:
   namespace: oai-ran-cuup

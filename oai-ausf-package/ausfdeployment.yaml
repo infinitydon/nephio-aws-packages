@@ -4,6 +4,6 @@ metadata:
   name: ausf-example
   namespace: ausf-example
   annotations:
-    argocd.argoproj.io/sync-options: Force=true,Replace=true  
+    argocd.argoproj.io/sync-options: ServerSideApply=true  
 spec:
   provider: ausf.openairinterface.org
