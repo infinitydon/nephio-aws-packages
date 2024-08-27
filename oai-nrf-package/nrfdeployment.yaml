@@ -1,0 +1,9 @@
+apiVersion: workload.nephio.org/v1alpha1
+kind: NFDeployment
+metadata:
+  name: nrf-example
+  namespace: oai-core
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true  
+spec:
+  provider: nrf.openairinterface.org
