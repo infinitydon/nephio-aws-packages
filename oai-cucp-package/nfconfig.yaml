@@ -5,6 +5,7 @@ metadata:
   namespace: oai-ran-cucp
   annotations:
     internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFConfig|example|cucp-nf-config'
+    argocd.argoproj.io/sync-options: ServerSideApply=true
 spec:
   configRefs:
   - apiVersion: workload.nephio.org/v1alpha1
