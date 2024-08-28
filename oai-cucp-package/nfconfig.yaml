@@ -1,6 +1,6 @@
 apiVersion: workload.nephio.org/v1alpha1
 kind: NFConfig
-metadata: # kpt-merge: example/cucp-nf-config
+metadata:
   name: oai-cucp-config
   namespace: oai-ran-cucp
   annotations:
