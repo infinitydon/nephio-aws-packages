@@ -3,6 +3,8 @@ kind: NetworkAttachmentDefinition
 metadata:
   name: cucp-ran-n2
   namespace: oai-ran-cucp
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"  
 spec:
   config: |
     {
@@ -29,6 +31,8 @@ kind: NetworkAttachmentDefinition
 metadata:
   name: cucp-ran-f1c
   namespace: oai-ran-cucp
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"  
 spec:
   config: |
     {
@@ -54,6 +58,8 @@ kind: NetworkAttachmentDefinition
 metadata:
   name: cucp-ran-e1
   namespace: oai-ran-cucp
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"  
 spec:
   config: |
     {
