@@ -4,7 +4,7 @@ metadata:
   name: oai-cucp-config
   namespace: oai-ran-cucp
   annotations:
-    internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFConfig|ran|cucp-nf-config'
+    internal.kpt.dev/upstream-identifier: 'workload.nephio.org|NFConfig|example|cucp-nf-config'
 spec:
   configRefs:
   - apiVersion: workload.nephio.org/v1alpha1
