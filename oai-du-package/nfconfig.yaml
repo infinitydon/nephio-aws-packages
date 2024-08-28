@@ -3,6 +3,8 @@ kind: NFConfig
 metadata:
   name: oai-du-config
   namespace: oai-ran-du
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"  
 spec:
   configRefs:
   - apiVersion: workload.nephio.org/v1alpha1

@@ -3,6 +3,8 @@ kind: NFDeployment
 metadata:
   name: cuup-ran
   namespace: oai-ran-cuup
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"  
 spec:
   provider: cuup.openairinterface.org
   interfaces:

@@ -3,6 +3,8 @@ kind: NFDeployment
 metadata: 
   name: du-ran
   namespace: oai-ran-du
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"   
 spec:
   provider: du.openairinterface.org
   interfaces:

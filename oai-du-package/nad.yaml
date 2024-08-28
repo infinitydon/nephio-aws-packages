@@ -3,6 +3,8 @@ kind: NetworkAttachmentDefinition
 metadata:
   name: du-edge-f1
   namespace: oai-ran-du
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"   
 spec:
   config: |
     {
