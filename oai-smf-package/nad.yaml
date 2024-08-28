@@ -2,7 +2,7 @@ apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
   name: smf-core-n4
-  namespace: smf-example
+  namespace: oai-core
 spec:
   config: |
     {

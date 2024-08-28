@@ -4,8 +4,7 @@ metadata:
   name: cucp-ran-amf-core
   namespace: oai-ran-cucp
   annotations:
-    specializer.nephio.org/owner: req.nephio.org/v1alpha1.Dependency.amf
-    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false    
+    specializer.nephio.org/owner: req.nephio.org/v1alpha1.Dependency.amf  
 spec:
   config:
     apiVersion: workload.nephio.org/v1alpha1

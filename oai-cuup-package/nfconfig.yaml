@@ -2,7 +2,7 @@ apiVersion: workload.nephio.org/v1alpha1
 kind: NFConfig
 metadata:
   name: oai-cuup-config
-  namespace: example
+  namespace: oai-ran-cuup
 spec:
   configRefs:
     - apiVersion: workload.nephio.org/v1alpha1

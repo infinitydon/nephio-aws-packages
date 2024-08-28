@@ -4,8 +4,7 @@ metadata:
   name: oai-cucp-config
   namespace: oai-ran-cuup
   annotations:
-    specializer.nephio.org/owner: req.nephio.org/v1alpha1.Dependency.cucp
-    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false    
+    specializer.nephio.org/owner: req.nephio.org/v1alpha1.Dependency.cucp 
 spec:
   config:
     apiVersion: workload.nephio.org/v1alpha1

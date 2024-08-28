@@ -2,11 +2,11 @@ apiVersion: req.nephio.org/v1alpha1
 kind: Capacity
 metadata:
   name: dataplane
+  namespace: oai-core
   annotations:
     config.kubernetes.io/local-config: "true"
-    specializer.nephio.org/owner: workload.nephio.org/v1alpha1.NFDeployment.upf-example
-    specializer.nephio.org/namespace: example
-    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false    
+    specializer.nephio.org/owner: workload.nephio.org/v1alpha1.NFDeployment.upf-core
+    specializer.nephio.org/namespace: oai-core
 spec:
   maxUplinkThroughput: 5G
   maxDownlinkThroughput: 5G

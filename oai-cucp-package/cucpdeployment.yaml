@@ -1,10 +1,8 @@
 apiVersion: workload.nephio.org/v1alpha1
 kind: NFDeployment
 metadata:
-  name: cucp-example
-  namespace: example
-  annotations:
-    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false  
+  name: cucp-ran
+  namespace: oai-ran-cucp 
 spec:
   provider: cucp.openairinterface.org
   interfaces:

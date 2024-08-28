@@ -2,9 +2,7 @@ apiVersion: workload.nephio.org/v1alpha1
 kind: NFConfig
 metadata:
   name: oai-amf-config
-  namespace: example
-  annotations:
-    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false  
+  namespace: oai-core 
 spec:
   configRefs:
     - apiVersion: cellular.nephio.org/v1alpha1

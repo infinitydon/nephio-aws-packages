@@ -2,7 +2,7 @@ apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
   name: du-edge-f1
-  namespace: example
+  namespace: oai-ran-du
 spec:
   config: |
     {

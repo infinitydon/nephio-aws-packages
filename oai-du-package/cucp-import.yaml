@@ -4,8 +4,7 @@ metadata:
   name: oai-cucp-config
   namespace: oai-ran-du
   annotations:
-    specializer.nephio.org/owner: req.nephio.org/v1alpha1.Dependency.cucp
-    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false    
+    specializer.nephio.org/owner: req.nephio.org/v1alpha1.Dependency.cucp  
 spec:
   config:
     apiVersion: workload.nephio.org/v1alpha1
@@ -17,7 +16,7 @@ spec:
         config.kubernetes.io/index: "0"
         internal.config.kubernetes.io/index: "0"
         internal.config.kubernetes.io/path: cucpdeployment.yaml
-        internal.kpt.dev/upstream-identifier: workload.nephio.org|NFDeployment|example|cucp-example
+        internal.kpt.dev/upstream-identifier: workload.nephio.org|NFDeployment|example|cucp-ran
     spec:
       interfaces:
       - name: n2

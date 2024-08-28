@@ -2,7 +2,7 @@ apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
   name: upf-edge-n3
-  namespace: upf-example
+  namespace: oai-core
 spec:
   config: |
     {
@@ -28,7 +28,7 @@ apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
   name: upf-edge-n4
-  namespace: upf-example
+  namespace: oai-core
 spec:
   config: |
     {
@@ -54,7 +54,7 @@ apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
   name: upf-edge-n6
-  namespace: upf-example
+  namespace: oai-core
 spec:
   config: |
     {

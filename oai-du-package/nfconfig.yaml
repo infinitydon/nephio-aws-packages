@@ -2,9 +2,7 @@ apiVersion: workload.nephio.org/v1alpha1
 kind: NFConfig
 metadata:
   name: oai-du-config
-  namespace: example
-  annotations:
-    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false  
+  namespace: oai-ran-du
 spec:
   configRefs:
   - apiVersion: workload.nephio.org/v1alpha1

@@ -2,7 +2,7 @@ apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
   name: cuup-edge-n3
-  namespace: example
+  namespace: oai-ran-cuup
 spec:
   config: |
     {
@@ -28,7 +28,7 @@ apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
   name: cuup-edge-f1u
-  namespace: example
+  namespace: oai-ran-cuup
 spec:
   config: |
     {
@@ -53,7 +53,7 @@ apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
 metadata:
   name: cuup-edge-e1
-  namespace: example
+  namespace: oai-ran-cuup
 spec:
   config: |
     {

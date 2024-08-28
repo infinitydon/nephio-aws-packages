@@ -1,9 +1,7 @@
 apiVersion: workload.nephio.org/v1alpha1
 kind: NFDeployment
 metadata:
-  name: udm-example
-  namespace: udm-example
-  annotations:
-    argocd.argoproj.io/sync-options: ServerSideApply=true,Validate=false  
+  name: udm-core
+  namespace: oai-core 
 spec:
   provider: udm.openairinterface.org
