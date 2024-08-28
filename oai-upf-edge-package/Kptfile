@@ -10,4 +10,7 @@ pipeline:
   mutators:
     - image: ghcr.io/infinitydon/nf-deploy-api-config-replacer:v0.1
       selectors:
-        - kind: NFDeployment    
+        - kind: NFDeployment
+    - image: ghcr.io/infinitydon/nad-api-config-replacer:v0.1
+      selectors:
+        - kind: NetworkAttachmentDefinition          

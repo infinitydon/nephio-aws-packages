@@ -1,8 +1,8 @@
 apiVersion: workload.nephio.org/v1alpha1
 kind: NFDeployment
 metadata:
-  name: upf-core
-  namespace: oai-core
+  name: upf-edge
+  namespace: oai-edge
 spec:
   provider: upf.openairinterface.org
   capacity:

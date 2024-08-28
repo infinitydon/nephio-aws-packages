@@ -3,7 +3,7 @@ apiVersion: workload.nephio.org/v1alpha1
 kind: NFConfig
 metadata:
   name: oai-upf-config
-  namespace: oai-core
+  namespace: oai-edge
 spec:
   configRefs:
     - apiVersion: cellular.nephio.org/v1alpha1
