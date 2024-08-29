@@ -18,6 +18,7 @@ spec:
   backend: TF_BACKEND_CONFIG # kpt-set: ${tf-backend-config}
   ignoreDelete: false
   keepLatestPodsOnly: true
+  persistentVolumeSize: 20Gi
   taskOptions:
   - for:
     - '*'
