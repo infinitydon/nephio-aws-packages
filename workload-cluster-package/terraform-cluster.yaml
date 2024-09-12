@@ -1,7 +1,7 @@
 apiVersion: tf.galleybytes.com/v1beta1
 kind: Terraform
 metadata:
-  name: example-cluster
+  name: FUNCTION-cluster
   namespace: tf-system
 spec:
   terraformVersion: v1.5.5
@@ -9,7 +9,7 @@ spec:
     terraform:
       image: ghcr.io/infinitydon/tf-operator-awscli
   writeOutputsToStatus: true
-  outputsSecret: example-cluster-tf-output
+  outputsSecret: FUNCTION-cluster-tf-output
   credentials:
   - aws:
       irsa: IRSA_ARN

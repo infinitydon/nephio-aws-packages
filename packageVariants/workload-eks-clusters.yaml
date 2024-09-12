@@ -20,6 +20,12 @@ spec:
       configMap:
         by-value: IRSA_ARN
         put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: FUNCTION
+        put-value: ran
     - image: gcr.io/kpt-fn/apply-setters:v0.2.0
       configMap:
         aws-region: us-west-2
@@ -58,6 +64,12 @@ spec:
       configMap:
         by-value: IRSA_ARN
         put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: FUNCTION
+        put-value: controlplane
     - image: gcr.io/kpt-fn/apply-setters:v0.2.0
       configMap:
         aws-region: us-west-2
@@ -96,6 +108,12 @@ spec:
       configMap:
         by-value: IRSA_ARN
         put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: FUNCTION
+        put-value: userplane
     - image: gcr.io/kpt-fn/apply-setters:v0.2.0
       configMap:
         aws-region: us-west-2
