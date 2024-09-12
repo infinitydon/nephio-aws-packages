@@ -4,6 +4,7 @@ metadata:
   name: propagate-name
   annotations:
     config.kubernetes.io/local-config: "true"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 replacements:
 - source:
     kind: ConfigMap
