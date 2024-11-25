@@ -1,0 +1,39 @@
+apiVersion: tf.galleybytes.com/v1beta1
+kind: Terraform
+metadata:
+  name: example-cluster # kpt-set: ${tf-cluster-name}
+  namespace: tf-system
+spec:
+  terraformVersion: v1.5.5
+  images:
+    terraform:
+      image: ghcr.io/infinitydon/tf-operator-awscli
+  writeOutputsToStatus: true
+  outputsSecret: example-cluster-tf-output # kpt-set: ${tf-secret-output-name}
+  credentials:
+  - aws:
+      irsa: IRSA_ARN
+  terraformModule:
+    source: https://github.com/infinitydon/eks-infra-terraform.git//workload-eks-tf-module-github-argocd?ref=main
+  backend: TF_BACKEND_CONFIG # kpt-set: ${tf-backend-config}
+  ignoreDelete: false
+  keepLatestPodsOnly: true
+  persistentVolumeSize: 20Gi
+  taskOptions:
+  - for:
+    - '*'
+    env:
+    - name: _REVISION
+      value: "10"
+    - name: TF_VAR_region
+      value: aws_region # kpt-set: ${aws-region}
+    - name: TF_VAR_eks_cluster_name
+      value: EKS_CLUSTER_NAME # kpt-set: ${eks-cluster-name}
+    - name: TF_VAR_eks_cluster_version
+      value: EKS_VERSION # kpt-set: ${eks-version}
+    - name: TF_VAR_node_instance_type
+      value: INSTANCE_TYPE # kpt-set: ${instance-type}
+    - name: TF_VAR_parameter_store_name
+      value: PARAMETER_STORE_NAME # kpt-set: ${parameter-store-name}
+    - name: TF_VAR_free5gc_kernel
+      value: FREE5GC_KERNEL_ENABLE # kpt-set: ${free5gc-kernel}      

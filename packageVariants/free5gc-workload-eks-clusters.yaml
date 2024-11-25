@@ -1,0 +1,122 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: ran-eks-cluster
+spec:
+  upstream:
+    repo: nephio-aws-packages
+    package: workload-cluster-package-free5gc
+    revision: r3-argocd
+  downstream:
+    repo: mgmt
+    package: ran
+  annotations:
+    approval.nephio.org/policy: initial     
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: IRSA_ARN
+        put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+    - image: gcr.io/kpt-fn/apply-setters:v0.2.0
+      configMap:
+        aws-region: us-west-2
+        eks-cluster-name: ran
+        eks-version: "\"1.31\""
+        instance-type: m5.4xlarge
+        parameter-store-name: ran-5g
+        tf-cluster-name: ran-cluster
+        free5gc-kernel: disable
+        tf-secret-output-name: ran-cluster-tf-output
+        tf-backend-config: |-
+           terraform {
+             backend "kubernetes" {
+               secret_suffix    = "ran-cluster"
+               in_cluster_config  = true
+               namespace = "tf-system"
+             }
+           }
+---
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: controlplane-eks-cluster
+spec:
+  upstream:
+    repo: nephio-aws-packages
+    package: workload-cluster-package-free5gc
+    revision: r3-argocd
+  downstream:
+    repo: mgmt
+    package: controlplane
+  annotations:
+    approval.nephio.org/policy: initial     
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: IRSA_ARN
+        put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+    - image: gcr.io/kpt-fn/apply-setters:v0.2.0
+      configMap:
+        aws-region: us-west-2
+        eks-cluster-name: ctrlplane
+        eks-version: "\"1.31\""
+        instance-type: m5.4xlarge
+        parameter-store-name: control-plane-5g
+        tf-cluster-name: controlplane-cluster
+        free5gc-kernel: disable
+        tf-secret-output-name: controlplane-cluster-tf-output        
+        tf-backend-config: |-
+           terraform {
+             backend "kubernetes" {
+               secret_suffix    = "ctrlplane-cluster"
+               in_cluster_config  = true
+               namespace = "tf-system"
+             }
+           }
+---
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: userplane-eks-cluster
+spec:
+  upstream:
+    repo: nephio-aws-packages
+    package: workload-cluster-package-free5gc
+    revision: r3-argocd
+  downstream:
+    repo: mgmt
+    package: userplane
+  annotations:
+    approval.nephio.org/policy: initial     
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+      selectors:
+      - kind: Terraform
+      configMap:
+        by-value: IRSA_ARN
+        put-value: arn:aws:iam::ACCOUNT_ID:role/mgmt-argocd-terraform-runner
+    - image: gcr.io/kpt-fn/apply-setters:v0.2.0
+      configMap:
+        aws-region: us-west-2
+        eks-cluster-name: userplane
+        eks-version: "\"1.31\""
+        instance-type: m5.4xlarge
+        parameter-store-name: user-plane-5g
+        tf-cluster-name: userplane-cluster
+        free5gc-kernel: enable
+        tf-secret-output-name: userplane-cluster-tf-output        
+        tf-backend-config: |-
+           terraform {
+             backend "kubernetes" {
+               secret_suffix    = "userplane-cluster"
+               in_cluster_config  = true
+               namespace = "tf-system"
+             }
+           }
