@@ -31,8 +31,22 @@ spec:
     env:
     - name: TF_VAR_github_org
       value: GITHUB_ORG # kpt-set: ${github-org}
+    - name: TF_VAR_region
+      value: DEPLOYMENT_REGION # kpt-set: ${deployment-region}
     - name: TF_VAR_workload_cluster_region
-      value: WORKLOAD_CLUSTER_REGION # kpt-set: ${workload-cluster-region}
+      value: DEPLOYMENT_REGION # kpt-set: ${deployment-region}
+    - name: TF_VAR_ran_az1
+      value: WORKLOAD_RAN_AZ1 # kpt-set: ${workload-ran-az1}
+    - name: TF_VAR_ran_az2
+      value: WORKLOAD_RAN_AZ2 # kpt-set: ${workload-ran-az2}
+    - name: TF_VAR_core_controlplane_az1
+      value: WORKLOAD_CORE_CONTROL_PLANE_AZ1 # kpt-set: ${workload-core-controlplane-az1}
+    - name: TF_VAR_core_controlplane_az2
+      value: WORKLOAD_CORE_CONTROL_PLANE_AZ2 # kpt-set: ${workload-core-controlplane-az2}
+    - name: TF_VAR_core_userplane_az1
+      value: WORKLOAD_CORE_USER_PLANE_AZ1 # kpt-set: ${workload-core-userplane-az1}
+    - name: TF_VAR_core_userplane_az2
+      value: WORKLOAD_CORE_USER_PLANE_AZ2 # kpt-set: ${workload-core-userplane-az2}
     - name: TF_VAR_attach_2nd_eni_lambda_s3_bucket
       value: MULTUS_LAMBDA_S3_BUCKET # kpt-set: ${multus-lambda-s3-bucket}
     - name: TF_VAR_github_repositories

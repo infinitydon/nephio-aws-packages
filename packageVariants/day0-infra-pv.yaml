@@ -17,7 +17,13 @@ spec:
     - image: gcr.io/kpt-fn/apply-setters:v0.2.0
       configMap:
         github-org: infinitydon
-        workload-cluster-region: us-west-2
+        deployment-region: us-west-2
+        workload-ran-az1: us-west-2a
+        workload-ran-az2: us-west-2b
+        workload-core-controlplane-az1: us-west-2a
+        workload-core-controlplane-az2: us-west-2b
+        workload-core-userplane-az1: us-west-2a
+        workload-core-userplane-az2: us-west-2b
         multus-lambda-s3-bucket: multus-lambda-us-west-2-oregon-2024-argo
         github-pat-secret-name: github-pat-credentials
         github-repos: '["argo-telco-ran-5g", "argo-telco-control-plane-5g", "argo-telco-user-plane-5g"]'
