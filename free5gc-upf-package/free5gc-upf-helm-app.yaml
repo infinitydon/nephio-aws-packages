@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: free5gc-upf
+  name: APP_NAME # kpt-set: ${argocd-app-name}
   namespace: argocd
 spec:
   project: default
