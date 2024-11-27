@@ -23,7 +23,7 @@ spec:
        amf-n2-netmask: "24"
        amf-n2-route-gw: 10.1.3.1
        gnb-n2-subnet-cidr: 10.0.5.0/24
-       ue-imsi: 208930000000003
+       ue-imsi: "208930000000003"
        smf-multus-n4-ip: 10.1.4.16
        smf-n4-netmask: "24"
        smf-n4-route-gw: 10.1.4.1
