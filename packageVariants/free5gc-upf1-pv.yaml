@@ -1,0 +1,36 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+ name: free5gc-upf-1
+spec:
+ upstream:
+   repo: nephio-aws-packages
+   package: free5gc-upf-package
+   revision: r3-argocd
+ downstream:
+   repo: user-plane
+   package: upf-1
+ annotations:
+   approval.nephio.org/policy: initial     
+ pipeline:
+   mutators:
+   - image: gcr.io/kpt-fn/apply-setters:v0.2.0
+     configMap:
+       argocd-app-name: free5gc-upf-1
+       helm-chart-version: 0.0.1
+       helm-release-name: core5g-upf1
+       dnn: internet
+       ue-ip-pool: 10.63.0.0/16
+       gnb-n3-subnet-cidr: 10.0.6.0/24
+       smf-n4-subnet-cidr: 10.1.4.0/24
+       upf-multus-n3-ip: 10.2.3.16
+       upf-n3-netmask: "24"
+       upf-n3-route-gw: 10.2.3.1
+       upf-multus-n4-ip: 10.2.4.16
+       upf-n4-netmask: "24"
+       upf-n4-route-gw: 10.2.4.1
+       upf-multus-n6-ip: 10.2.5.16
+       upf-n6-netmask: "24"
+       multus-n3-dev: eth1
+       multus-n4-dev: eth2 
+       multus-n6-dev: eth3

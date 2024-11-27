@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+ name: ueransim-gnb-ue
+ namespace: argocd
+spec:
+ project: default
+ source:
+   chart: free5gc-ueransim
+   repoURL: ghcr.io/infinitydon
+   targetRevision: CHART_VERSION # kpt-set: ${helm-chart-version}
+   helm:
+     releaseName: HELM_RELEASE_VERSION # kpt-set: ${helm-release-name}
+     valuesObject:
+       dnn: DNN # kpt-set: ${dnn}
+       plmn:
+         mcc: PLMN_MCC # kpt-set: ${plmn-mcc}
+         mnc: PLMN_MNC # kpt-set: ${plmn-mnc}
+         tac: PLMN_TAC # kpt-set: ${plmn-tac}
+       slicing:
+         sst: SLICE_SST # kpt-set: ${slice-sst}
+         sd: SLICE_SD # kpt-set: ${slice-sd}
+       ue:
+         n1:
+           multusIP: UE_MULTUS_N1_IP # kpt-set: ${ue-multus-n1-ip}
+           multusNetworkMask: UE_N1_NETMASK # kpt-set: ${ue-n1-netmask}
+       gnb:
+         amfPort: AMF_PORT # kpt-set: ${amf-port}
+         n2:
+           multusIP: GNB_MULTUS_N2_IP # kpt-set: ${gnb-multus-n2-ip}
+           multusNetworkMask: GNB_N2_NETMASK # kpt-set: ${gnb-n2-netmask}
+           routeGw: GNB_N2_ROUTE_GW # kpt-set: ${gnb-n2-route-gw}
+         n3:
+           multusIP: GNB_MULTUS_N3_IP # kpt-set: ${gnb-multus-n3-ip}
+           multusNetworkMask: GNB_N3_NETMASK # kpt-set: ${gnb-n3-netmask}
+           routeGw: GNB_N3_ROUTE_GW # kpt-set: ${gnb-n3-route-gw}
+       upf:
+         N3subnetCIDR: UPF_N3_SUBNET_CIDR # kpt-set: ${upf-n3-subnet-cidr}
+       amf:
+         N2multusIP: AMF_N2_MULTUS_IP # kpt-set: ${amf-n2-multus-ip}
+         N2subnetCIDR: AMF_N2_SUBNET_CIDR # kpt-set: ${amf-n2-subnet-cidr}
+       multus:
+         n2dev: MULTUS_N2_DEV # kpt-set: ${multus-n2-dev}
+         n3dev: MULTUS_N3_DEV # kpt-set: ${multus-n3-dev}
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: telco
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true  
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+      - ServerSideApply=true,Validate=false
