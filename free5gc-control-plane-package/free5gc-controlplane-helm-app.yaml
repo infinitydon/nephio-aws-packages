@@ -23,6 +23,7 @@ spec:
          ue:
            imsi: UE_IMSI # kpt-set: ${ue-imsi}
          smf:
+           ueImsi: UE_ROUTING_IMSI # kpt-set: ${ue-routing-imsi}
            n4:
              multusIP: SMF_MULTUS_N4_IP # kpt-set: ${smf-multus-n4-ip}
              multusNetworkMask: SMF_N4_NETMASK # kpt-set: ${smf-n4-netmask}
