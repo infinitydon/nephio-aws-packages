@@ -19,11 +19,8 @@ spec:
              multusNetworkMask: AMF_N2_NETMASK # kpt-set: ${amf-n2-netmask}
              routeGw: AMF_N2_ROUTE_GW # kpt-set: ${amf-n2-route-gw}
          gnb:
-           N2subnetCIDR: GNB_N2_SUBNET_CIDR # kpt-set: ${gnb-n2-subnet-cidr} 
-         ue:
-           imsi: UE_IMSI # kpt-set: ${ue-imsi}
+           N2subnetCIDR: GNB_N2_SUBNET_CIDR # kpt-set: ${gnb-n2-subnet-cidr}
          smf:
-           ueImsi: UE_ROUTING_IMSI # kpt-set: ${ue-routing-imsi}
            n4:
              multusIP: SMF_MULTUS_N4_IP # kpt-set: ${smf-multus-n4-ip}
              multusNetworkMask: SMF_N4_NETMASK # kpt-set: ${smf-n4-netmask}
