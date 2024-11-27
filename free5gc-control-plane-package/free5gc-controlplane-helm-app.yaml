@@ -4,44 +4,44 @@ metadata:
  name: free5gc-core
  namespace: argocd
 spec:
- project: default
- source:
-   chart: free5gc-controlplane
-   repoURL: ghcr.io/infinitydon
-   targetRevision: CHART_VERSION # kpt-set: ${helm-chart-version}
-   helm:
-     releaseName: HELM_RELEASE_VERSION # kpt-set: ${helm-release-name}
-     valuesObject:
-        dnn: DNN # kpt-set: ${dnn}
-        amf:
-          n2:
-            multusIP: AMF_MULTUS_N2_IP # kpt-set: ${amf-multus-n2-ip}
-            multusNetworkMask: AMF_N2_NETMASK # kpt-set: ${amf-n2-netmask}
-            routeGw: AMF_N2_ROUTE_GW # kpt-set: ${amf-n2-route-gw}
-        gnb:
-          N2subnetCIDR: GNB_N2_SUBNET_CIDR # kpt-set: ${gnb-n2-subnet-cidr} 
-        ue:
-          imsi: UE_IMSI # kpt-set: ${ue-imsi}
-        smf:
-          n4:
-            multusIP: SMF_MULTUS_N4_IP # kpt-set: ${smf-multus-n4-ip}
-            multusNetworkMask: SMF_N4_NETMASK # kpt-set: ${smf-n4-netmask}
-            routeGw: SMF_N4_ROUTE_GW # kpt-set: ${smf-n4-route-gw}
-        upf:
-          N4subnetCIDR: UPF_N4_SUBNET_CIDR # kpt-set: ${upf-n4-subnet-cidr}
-        upf1:
-          n3:
-            multusIP: UPF1_MULTUS_N3_IP # kpt-set: ${upf1-multus-n3-ip}
-          n4:
-            multusIP: UPF1_MULTUS_N4_IP # kpt-set: ${upf1-multus-n4-ip}
-        upf2:
-          n3:
-            multusIP: UPF2_MULTUS_N3_IP # kpt-set: ${upf2-multus-n3-ip}
-          n4:
-            multusIP: UPF2_MULTUS_N4_IP # kpt-set: ${upf2-multus-n4-ip}
-        multus:
-          n2dev: MULTUS_N2_DEV # kpt-set: ${multus-n2-dev}
-          n4dev: MULTUS_N4_DEV # kpt-set: ${multus-n4-dev}
+  project: default
+  source:
+    chart: free5gc-controlplane
+    repoURL: ghcr.io/infinitydon
+    targetRevision: CHART_VERSION # kpt-set: ${helm-chart-version}
+    helm:
+      releaseName: HELM_RELEASE_VERSION # kpt-set: ${helm-release-name}
+      valuesObject:
+         dnn: DNN # kpt-set: ${dnn}
+         amf:
+           n2:
+             multusIP: AMF_MULTUS_N2_IP # kpt-set: ${amf-multus-n2-ip}
+             multusNetworkMask: AMF_N2_NETMASK # kpt-set: ${amf-n2-netmask}
+             routeGw: AMF_N2_ROUTE_GW # kpt-set: ${amf-n2-route-gw}
+         gnb:
+           N2subnetCIDR: GNB_N2_SUBNET_CIDR # kpt-set: ${gnb-n2-subnet-cidr} 
+         ue:
+           imsi: UE_IMSI # kpt-set: ${ue-imsi}
+         smf:
+           n4:
+             multusIP: SMF_MULTUS_N4_IP # kpt-set: ${smf-multus-n4-ip}
+             multusNetworkMask: SMF_N4_NETMASK # kpt-set: ${smf-n4-netmask}
+             routeGw: SMF_N4_ROUTE_GW # kpt-set: ${smf-n4-route-gw}
+         upf:
+           N4subnetCIDR: UPF_N4_SUBNET_CIDR # kpt-set: ${upf-n4-subnet-cidr}
+         upf1:
+           n3:
+             multusIP: UPF1_MULTUS_N3_IP # kpt-set: ${upf1-multus-n3-ip}
+           n4:
+             multusIP: UPF1_MULTUS_N4_IP # kpt-set: ${upf1-multus-n4-ip}
+         upf2:
+           n3:
+             multusIP: UPF2_MULTUS_N3_IP # kpt-set: ${upf2-multus-n3-ip}
+           n4:
+             multusIP: UPF2_MULTUS_N4_IP # kpt-set: ${upf2-multus-n4-ip}
+         multus:
+           n2dev: MULTUS_N2_DEV # kpt-set: ${multus-n2-dev}
+           n4dev: MULTUS_N4_DEV # kpt-set: ${multus-n4-dev}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: telco
