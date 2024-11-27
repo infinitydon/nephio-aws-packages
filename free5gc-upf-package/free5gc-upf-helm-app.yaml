@@ -34,15 +34,15 @@ spec:
            n3dev: MULTUS_N3_DEV # kpt-set: ${multus-n3-dev}
            n4dev: MULTUS_N4_DEV # kpt-set: ${multus-n4-dev}
            n6dev: MULTUS_N6_DEV # kpt-set: ${multus-n6-dev}
-    destination:
-      server: "https://kubernetes.default.svc"
-      namespace: telco
-    syncPolicy:
-      automated:
-        prune: true
-        selfHeal: true
-        allowEmpty: true  
-      syncOptions:
-        - CreateNamespace=true
-        - Replace=true
-        - ServerSideApply=true,Validate=false
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: telco
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true  
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+      - ServerSideApply=true,Validate=false
